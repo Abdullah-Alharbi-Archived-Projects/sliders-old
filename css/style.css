@@ -29,6 +29,13 @@ ul {
   background-color: #444444;
   color: #ffffff;
   font-size: 1.8rem;
+  text-align: center;
+  margin: 0 auto;
 }
-
+.slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 
