@@ -9,3 +9,11 @@ const seconds = slider.hasAttribute('data-seconds') ? slider.getAttribute('data-
 
 // this will get all the sliders(li.slide) from ul.slide-track
 const slides = Array.from(slideTrack.children);
+
+// get the slide width
+const { width } = slides[0].getBoundingClientRect();
+
+// arrange the slides next to one another
+const setSlidePosition = (element, index) => element.style.left = `${width * index}px`;
+
+slides.forEach(setSlidePosition);
