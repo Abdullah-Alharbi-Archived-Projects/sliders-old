@@ -6,4 +6,4 @@
 
 ```
 <section id="slider" data-seconds="<Seconds here>"> <!-- 5, 8 etc... -->
-``
+```
