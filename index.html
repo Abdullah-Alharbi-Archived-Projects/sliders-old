@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sliders</title>
   <!-- font-awesome version 5.8.2 -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
 
   <!-- custom style -->
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <section id="slider" data-seconds="5">
     <div class="slide-container">
@@ -24,30 +26,9 @@
         </li>
         <li class="slide">
           <!-- التقويم -->
-          <span id="date">5 رمضان</span>
-          <span id="day">الجمعة</span>
-          <ul>
-            <li>
-              <span class="pray">الفجر:</span>
-              <span class="pray-time">03:47 ص</span>
-            </li>
-            <li>
-              <span class="pray">الظهر:</span>
-              <span class="pray-time">11:50 ص</span>
-            </li>
-            <li>
-              <span class="pray">العصر:</span>
-              <span class="pray-time">03:16 ص</span>
-            </li>
-            <li>
-              <span class="pray">المغرب:</span>
-              <span class="pray-time">06:27 ص</span>
-            </li>
-            <li>
-              <span class="pray">العشاء:</span>
-              <span class="pray-time">07:57 ص</span>
-            </li>
-          </ul>
+          <span id="date"></span>
+          <span id="day"></span>
+          <ul id="calender"></ul>
         </li>
         <li class="slide">
           <!-- الساعه و الوقت المتبقي للصلاة -->
@@ -69,7 +50,8 @@
   </section>
 
   <script src="js/slider.js"></script>
-  <script type="text/javascript" src="js/calender.js"></script>
-
+  <script src="js/praytime.js"></script>
+  <script src="js/calender.js"></script>
 </body>
+
 </html>
