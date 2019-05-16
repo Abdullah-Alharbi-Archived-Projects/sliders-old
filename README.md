@@ -10,4 +10,5 @@
 ## Todo
 - [x] Calender system
 - [-] time and remaining time for pray with clock
+  - [x] clock
 - [-] temperature(C) and weather
