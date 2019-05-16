@@ -37,6 +37,7 @@ ul {
   padding: 0;
   position: relative;
   height: 100%;
+  transition: transform 250ms ease-in;
 }
 .slide {
   position: absolute;
