@@ -5,5 +5,5 @@
 - you can configure the seconds from this line:
 
 ```
-<section id="slider" data-seconds="<Seconds here>"> <!-- 5, 8 etc... -->
+<section id="slider" data-seconds="<Seconds here>"> <!-- 5, 8 etc... \ default 15 seconds -->
 ```
