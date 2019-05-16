@@ -340,7 +340,7 @@ h1.id = 'todayStr';
 h1.innerHTML = todayArStr;
 day.innerHTML = HijriDate.Hday + ' ' + HmonthsAr[HijriDate.Hmonth] + '<br>';
 day.appendChild(h1);
-for (i in list) {
+for (i in listAr) {
   var li = document.createElement('li');
   li.innerHTML = listAr[i] + '  -  ' + stime(times[list[i].toLowerCase()]);
   ul.appendChild(li);
