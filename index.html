@@ -11,7 +11,7 @@
 
   <!-- clock style -->
   <link rel="stylesheet" href="css/clock.css">
-  
+
   <!-- custom style -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -35,7 +35,14 @@
         </li>
         <li class="slide">
           <!-- الساعه و الوقت المتبقي للصلاة -->
-          <div class="clock"></div>
+          <div class="clock-container">
+              <div class="clock">
+                <div class="clock__second"></div>
+                <div class="clock__minute"></div>
+                <div class="clock__hour"></div>
+                <div class="clock__axis"></div>
+              </div>
+          </div>
           <span>الوقت المتبقي للصلاة</span><br>
           <span id="current-pray">العشاء</span><br>
           <span id="current-pray-countdown">الساعات:الدقائق:الثواني</span>
@@ -55,6 +62,8 @@
   <script src="js/slider.js"></script>
   <script src="js/praytime.js"></script>
   <script src="js/calender.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src="js/clock.js"></script>
 </body>
 
 </html>
