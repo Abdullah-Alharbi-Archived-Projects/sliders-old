@@ -17,3 +17,40 @@ const { width } = slides[0].getBoundingClientRect();
 const setSlidePosition = (element, index) => element.style.left = `${width * index}px`;
 
 slides.forEach(setSlidePosition);
+
+
+const moveToSlide = (track, currentSlide, targetSlide) => {
+  slideTrack.style.transform = `translateX(-${targetSlide.style.left})`;
+  currentSlide.classList.remove('current-slide');
+  targetSlide.classList.add('current-slide');
+};
+
+let firstSlide = null;
+let lastSlide = null; 
+// this will fire after x seconds
+setInterval(() => {
+  const currentSlide = slideTrack.querySelector('.current-slide');
+  if (!firstSlide) {
+    currentSlide.id = 'first';
+    firstSlide = currentSlide.id;
+  }
+
+  const nextSlide = currentSlide.nextElementSibling;
+  if (nextSlide && !lastSlide) {
+    // move to the next slide
+    moveToSlide(slideTrack, currentSlide, nextSlide);
+  } else {
+    // back to the previous slide
+    if (!lastSlide) {
+      currentSlide.id = 'last';
+      lastSlide = currentSlide.id;
+    }
+
+    const previousSlide = currentSlide.previousElementSibling;
+    if (previousSlide) {
+      moveToSlide(slideTrack, currentSlide, previousSlide);
+    } else {
+      lastSlide = null;
+    }
+  }
+}, 1000 * seconds);
