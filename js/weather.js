@@ -12,7 +12,6 @@ function weather(city, tempType, apiKey) {
       const temp = convertTemp(tempType, main.temp);
       tempElement.innerHTML = `الرياض - ${temp}&deg;`;
       
-      console.log(weather[0]);
       iconURL += `${weather[0].icon}.png`;
       iconElement.setAttribute('src', iconURL);
       iconElement.innerHTML = weather[0].main;
