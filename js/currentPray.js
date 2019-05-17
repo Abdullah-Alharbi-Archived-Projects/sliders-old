@@ -1,3 +1,13 @@
+function tConv24(time24) {
+  var ts = time24;
+  var H = +ts.substr(0, 2);
+  var h = H % 12 || 12;
+  h = h < 10 ? "0" + h : h;
+  var ampm = H < 12 ? " AM" : " PM";
+  ts = h + ts.substr(2, 3) + ampm;
+  return ts;
+}
+
 function convertTimeToUnix(time) {
   var now = new Date();
   var h = time.split(":")[0];
@@ -105,11 +115,19 @@ var currentPrayObject = {
 };
 
 function run() {
-  var now = new Date();
-  var nowUnix = now.getTime() / 1000;
   for (i in list) {
+    var now = new Date();
     var prayUnix = convertTimeToUnix(times[list[i].toLowerCase()]);
     var diff = prayUnix - nowUnix;
+    var nowUnix = now.getTime() / 1000;
+    var currentHour = tConv24(now.toTimeString()).split(":")[0];
+
+    if (currentHour > 8 && getModifier(tConv24(now.toTimeString())) === "PM") {
+      // after Isha
+      currentPrayObject.name = "العشاء";
+      currentPrayObject.time = times[list[5].toLowerCase()];
+      break;
+    }
 
     if (diff <= 0) {
       continue;
