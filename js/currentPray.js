@@ -121,7 +121,6 @@ function start() {
 start();
 var currentPrayCountDownElement = document.getElementById('current-pray-countdown');
 countDown(currentPrayObject.nextPrayTime, currentPrayCountDownElement);
-console.log(currentPrayObject);
 
 var currentPrayElement = document.getElementById('current-pray');
 currentPrayElement.innerHTML = currentPrayObject.nextPrayStr;
