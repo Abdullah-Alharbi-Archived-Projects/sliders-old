@@ -123,9 +123,9 @@ function run() {
     var currentHour = tConv24(now.toTimeString()).split(":")[0];
 
     if (currentHour > 8 && getModifier(tConv24(now.toTimeString())) === "PM") {
-      // after Isha
-      currentPrayObject.name = "العشاء";
-      currentPrayObject.time = times[list[5].toLowerCase()];
+      // after Isha set currentPray to Fajr
+      currentPrayObject.name = "الفجر";
+      currentPrayObject.time = times[list[0].toLowerCase()];
       break;
     }
 
