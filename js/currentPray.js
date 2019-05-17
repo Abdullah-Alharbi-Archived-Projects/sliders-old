@@ -47,6 +47,9 @@ function getNextPray(times, list, index) {
 }
 
 function countDown(time, element) {
+  if (typeof time === 'undefined') {
+    start();
+  }
   var x = setInterval(function () {
     var now = new Date();
     var h = time.split(':')[0];
@@ -96,10 +99,10 @@ function start() {
     if (currentHour > currentPrayHour && currentModifier === 'pm' || currentHour < nextPrayHour && currentModifier === 'am') {
       currentPrayObject.nextPrayStr = 'الفجر';
       currentPrayObject.nextPrayTime = getPrayTimeByStr(times, currentPrayObject.nextPrayStr);
-    } else if (currentHour >= currentPrayHour && currentHour < nextPrayHour && currentModifier === 'am') {
+    } else if (currentHour >= currentPrayHour && currentHour <= nextPrayHour && currentModifier === 'am') {
       currentPrayObject.nextPrayStr = 'الإشراق';
       currentPrayObject.nextPrayTime = getPrayTimeByStr(times, currentPrayObject.nextPrayStr);
-    } else if (currentHour >= currentPrayHour && currentHour < nextPrayHour && currentModifier === 'am') {
+    } else if (currentHour >= currentPrayHour && currentHour <= nextPrayHour && currentModifier === 'am') {
       currentPrayObject.nextPrayStr = 'الظهر';
       currentPrayObject.nextPrayTime = getPrayTimeByStr(times, currentPrayObject.nextPrayStr);
     } else if (currentHour <= currentPrayHour && currentHour <= nextPrayHour && currentModifier === 'pm') {
@@ -118,6 +121,7 @@ function start() {
 start();
 var currentPrayCountDownElement = document.getElementById('current-pray-countdown');
 countDown(currentPrayObject.nextPrayTime, currentPrayCountDownElement);
+console.log(currentPrayObject);
 
 var currentPrayElement = document.getElementById('current-pray');
 currentPrayElement.innerHTML = currentPrayObject.nextPrayStr;
