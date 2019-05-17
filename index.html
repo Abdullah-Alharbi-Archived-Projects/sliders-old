@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <section id="slider" data-seconds="5">
+  <section id="slider" data-seconds="2">
     <div class="slide-container">
       <ul class="slide-track">
         <li class="slide current-slide">
@@ -47,24 +47,24 @@
           <span id="current-pray"></span><br>
           <span id="current-pray-countdown"></span><br>
         </li>
-        <li class="slide" data-weather="true">
+        <li class="slide weather" data-weather="true" data-city="riyadh" data-temperature-type="c" api-key="openweathermap-api-key">
           <!-- درجة الحرارة والطقس -->
           <p id="weather">
-            <span id="temperature">31&deg;</span>
-            <i class="fas fa-cloud-rain"></i><br>
-            <span id="weather-stats">هطول أمطار 40%</span>
+            <img id="icon"> <!-- fa-cloud- -->
+            <span id="temperature"></span><br> <!-- &deg; -->
+            <span id="weather-stats"></span>
           </p>
         </li>
       </ul>
     </div>
   </section>
 
+  <script src="js/weather.js"></script>
   <script src="js/slider.js"></script>
   <script src="js/praytime.js"></script>
   <script src="js/calender.js"></script>
   <script src="js/clock.js"></script>
   <script src="js/currentPray.js"></script>
-  <script src="js/weather.js"></script>
 </body>
 
 </html>
