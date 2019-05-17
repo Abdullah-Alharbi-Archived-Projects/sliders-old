@@ -20,4 +20,4 @@ api-key="openweathermap-api-key">
 - [x] Calender system
 - [x] remaining time for pray with clock
   - [x] clock
-- [-] temperature(C) and weather
+- [x] temperature(C) and weather
