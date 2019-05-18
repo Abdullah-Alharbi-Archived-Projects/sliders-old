@@ -58,8 +58,8 @@ function countDown(time, element) {
 	var nowTimeStr = now.toTimeString();
 	var nowH = parseInt(tConv24(nowTimeStr).split(':')[0]);
 	var nowM = parseInt(tConv24(nowTimeStr).split(':')[1]);
-	
-	if (nowH >= h && nowM >= min && getModifier(tConv24(nowTimeStr)) === "PM") {
+	console.log(min >= nowM);
+	if (nowH >= h && getModifier(tConv24(nowTimeStr)) === "PM") {
 		splittedNowStr[2] = parseInt(splittedNowStr[2]) + 1;
 	}
 	
@@ -136,6 +136,5 @@ function run() {
   currentPrayElement.innerHTML = currentPrayObject.name;
 }
 
-// updated!
 run();
 
