@@ -55,6 +55,14 @@ function countDown(time, element) {
     var min = time.replace(/[a-z.ص.م]/gi, "").split(":")[1];
     var md = getModifier(time);
     var splittedNowStr = now.toDateString().split(" ");
+	var nowTimeStr = now.toTimeString();
+	var nowH = parseInt(tConv24(nowTimeStr).split(':')[0]);
+	var nowM = parseInt(tConv24(nowTimeStr).split(':')[1]);
+	
+	if (nowH >= h && nowM >= min && getModifier(tConv24(nowTimeStr)) === "PM") {
+		splittedNowStr[2] = parseInt(splittedNowStr[2]) + 1;
+	}
+	
     // convert str time to date object
     var ending = new Date(
       splittedNowStr[1] +
@@ -77,57 +85,37 @@ function countDown(time, element) {
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+	var seconds = Math.floor(((distance + 9000) % (1000 * 60)) / 1000);
+	
     element.innerHTML =
       hours +
       " : " +
       minutes +
       " : " +
-      (seconds + 2) +
-      "<br>" +
-      "س : " +
-      "د : " +
-      "ث";
+      seconds;
 
     if (distance < 0) {
       clearInterval(x);
-      element.innerHTML =
-        hours +
-        " : " +
-        minutes +
-        " : " +
-        (seconds + 2) +
-        "<br>" +
-        "س : " +
-        "د : " +
-        "ث";
-      setTimeout(function() {
-        run();
-      }, 1000 * 2);
+      element.innerHTML = 'حان الان وقت الصلاة';
+      setTimeout(run, 1000 * 2);
     }
   }, 1000);
 }
 
 var currentPrayObject = {
-  name: "",
-  time: ""
+  name: "الفجر",
+  time: times[list[0].toLowerCase()]
 };
 
 function run() {
   for (i in list) {
     var now = new Date();
     var prayUnix = convertTimeToUnix(times[list[i].toLowerCase()]);
-    var diff = prayUnix - nowUnix;
     var nowUnix = now.getTime() / 1000;
-    var currentHour = tConv24(now.toTimeString()).split(":")[0];
-
-    if (currentHour > 8 && getModifier(tConv24(now.toTimeString())) === "PM") {
-      // after Isha set currentPray to Fajr
-      currentPrayObject.name = "الفجر";
-      currentPrayObject.time = times[list[0].toLowerCase()];
-      break;
-    }
+	var diff = prayUnix - nowUnix;
+    var currentTimeL = tConv24(now.toTimeString()).split(":");
+	var currentHour = currentTimeL[0];
+	var currentMinutes = currentTimeL[1];
 
     if (diff <= 0) {
       continue;
@@ -137,14 +125,17 @@ function run() {
       break;
     }
   }
+  
+  console.log(currentPrayObject);
+  var currentPrayCountDownElement = document.getElementById(
+  "current-pray-countdown"
+  );
+  countDown(currentPrayObject.time, currentPrayCountDownElement);
+
+  var currentPrayElement = document.getElementById("current-pray");
+  currentPrayElement.innerHTML = currentPrayObject.name;
 }
 
+// updated!
 run();
-console.log(currentPrayObject);
-var currentPrayCountDownElement = document.getElementById(
-  "current-pray-countdown"
-);
-countDown(currentPrayObject.time, currentPrayCountDownElement);
 
-var currentPrayElement = document.getElementById("current-pray");
-currentPrayElement.innerHTML = currentPrayObject.name;
